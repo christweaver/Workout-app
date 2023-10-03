@@ -6,28 +6,31 @@ export default function Add({ workout }) {
   const { data: session } = useSession();
   console.log(session?.user.email);
   let username = session?.user.email;
+
+  // Define state variables outside the map callback
+  const [reps, setReps] = useState("");
+  const [weight, setWeight] = useState("");
+  const [sets, setSets] = useState("");
+  let name;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch("http://localhost:3000/api/new", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ name, reps, weight, sets, username }),
+    });
+    if (res.ok) {
+      console.log("yay");
+    }
+  };
+
   return (
     <div className="grid grid-cols-2 gap-4 pl-10 pr-10 pb-4">
       {workout.map((item) => {
-        let [reps, setReps] = useState("");
-        let [weight, setWeight] = useState("");
-        let [sets, setSets] = useState("");
-        let name = item.name;
+        name = item.name;
         let compound = item.compound ? "This is a compound exercise" : "";
-
-        let handleSubmit = async (e) => {
-          e.preventDefault();
-          const res = await fetch("http://localhost:3000/api/new", {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({ name, reps, weight, sets, username }),
-          });
-          if (res.ok) {
-            console.log("yay");
-          }
-        };
 
         return (
           <div className=" mb-4 p-4 shadow-2xl rounded-lg pl-20" key={item._id}>

@@ -3,9 +3,10 @@ import Link from "next/link";
 import { useState } from "react";
 export default function WorkoutPlans({ type }) {
   let [level, setLevel] = useState("");
-
+  console.log(level);
   function settLevel(e) {
     setLevel(e.target.innerText);
+    console;
   }
   return (
     <div className="flex justify-between flex-row">
@@ -16,6 +17,7 @@ export default function WorkoutPlans({ type }) {
         >
           <h1 className="text-[20px] font-bold pt-2">Beginner</h1>
         </Link>
+
         <h2 className="pt-2 font-poppins">
           This displays four workouts including two compound exercies and two
           accessory movements.
