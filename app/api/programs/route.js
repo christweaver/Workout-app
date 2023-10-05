@@ -16,11 +16,11 @@ import { NextResponse } from "next/server";
 export async function GET() {
   await connectToDb();
 
-  const options = {
+  const time = {
     maxTimeMS: 60000, // Increase the timeout as needed
   };
 
-  let optionsData = await Program.find({}, null, options);
+  let options = await Program.find({}, null, time);
 
-  return NextResponse.json({ options: optionsData });
+  return NextResponse.json({ options });
 }

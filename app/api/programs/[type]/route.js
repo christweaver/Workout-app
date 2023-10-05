@@ -19,11 +19,11 @@ export async function GET(req, { params }) {
   let { type } = params;
   await connectToDb();
 
-  const options = {
+  const time = {
     maxTimeMS: 60000, // Increase the timeout as needed
   };
 
-  let optionsData = await Program.find({ type }, null, options);
+  let options = await Program.find({ type }, null, time);
 
-  return NextResponse.json({ options: optionsData }, { status: 200 });
+  return NextResponse.json({ options }, { status: 200 });
 }
