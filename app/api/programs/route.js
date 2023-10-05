@@ -17,7 +17,7 @@ export async function GET() {
   await connectToDb();
 
   const time = {
-    maxTimeMS: 60000, // Increase the timeout as needed
+    maxTimeMS: 60000,
   };
 
   let options = await Program.find({}, null, time);

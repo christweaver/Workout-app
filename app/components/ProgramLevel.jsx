@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 export default function WorkoutPlans({ type }) {
-  let [level, setLevel] = useState("");
+  let [level, setLevel] = useState(null);
   console.log(level);
   function settLevel(e) {
     setLevel(e.target.innerText);

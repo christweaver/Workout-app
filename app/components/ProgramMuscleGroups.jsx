@@ -2,7 +2,7 @@
 import { useState } from "react";
 import ProgramLevel from "./ProgramLevel";
 export default function Login() {
-  let [type, setType] = useState("");
+  let [type, setType] = useState(null);
 
   function settType(e) {
     setType(e.target.innerText);
