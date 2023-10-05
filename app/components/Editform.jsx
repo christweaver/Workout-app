@@ -9,7 +9,7 @@ export default function EditForm({ name, weight, sets, reps, id }) {
   let router = useRouter();
   let handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`http://localhost:3000/api/new/${id}`, {
+    const res = await fetch(`/api/new/${id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",

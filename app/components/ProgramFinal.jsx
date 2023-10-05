@@ -1,7 +1,7 @@
 import GetProgramApi from "./GetProgramApi";
 
 let getTopics = async (type) => {
-  const res = await fetch(`http://localhost:3000/api/programs/${type}`, {
+  const res = await fetch(`/api/programs/${type}`, {
     cache: "no-store",
   });
   return res.json();
