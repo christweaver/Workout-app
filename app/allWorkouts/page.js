@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import AllWorkouts from "../components/AllWorkouts";
 let getTopics = async () => {
-  const res = await fetch("workout-application-q7icvk342-christys-projects.vercel.app/api/new", {
+  const res = await fetch("/api/new", {
     cache: "no-store",
   });
   return res.json();
