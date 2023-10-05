@@ -8,6 +8,9 @@ let getTopics = async (type) => {
 };
 export default async function MuscleGroup({ type, level }) {
   let { options } = await getTopics(type);
+  if (!type) {
+    return <div>No 'type' selected.</div>;
+  }
 
   // FILTERS TO FIND WORKOUTS THAT ARE LISTED AS COMPOUND
   let compEx = options.filter((word) => {

@@ -15,7 +15,7 @@ let getTopics = async () => {
 export default function Test() {
   const { data: session } = useSession();
   const user = session?.user.email;
-  const [list, setList] = useState([]); // Use state to manage the list data
+  const [list, setList] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
