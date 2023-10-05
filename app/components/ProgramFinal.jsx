@@ -1,16 +1,25 @@
+"use client";
+
 import GetProgramApi from "./GetProgramApi";
+import { useEffect, useState } from "react";
 
 let getTopics = async (type) => {
-  const res = await fetch(`http://localhost:3000/api/programs/${type}`, {
+  const res = await fetch(`/api/programs/${type}`, {
     cache: "no-store",
   });
   return res.json();
 };
-export default async function MuscleGroup({ type, level }) {
-  let { options } = await getTopics(type);
-  if (!type) {
-    return <div>No 'type' selected.</div>;
-  }
+export default function MuscleGroup({ type, level }) {
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getTopics(type);
+      setOptions(data.options);
+    }
+
+    fetchData();
+  }, []);
 
   // FILTERS TO FIND WORKOUTS THAT ARE LISTED AS COMPOUND
   let compEx = options.filter((word) => {
