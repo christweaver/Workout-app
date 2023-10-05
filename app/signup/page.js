@@ -9,7 +9,7 @@ export default function Signup() {
   let handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:3000/api/signUp", {
+    const res = await fetch("/api/signUp", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -17,7 +17,7 @@ export default function Signup() {
       body: JSON.stringify({ email, password }),
     });
     if (res.ok) {
-      router.replace("http://localhost:3000/login");
+      router.replace("/login");
     }
   };
 

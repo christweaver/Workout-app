@@ -1,7 +1,7 @@
 "use client";
 export default function Deleted({ id }) {
   let goodbye = async function () {
-    const res = await fetch(`http://localhost:3000/api/new/${id}`, {
+    const res = await fetch(`/api/new/${id}`, {
       method: "DELETE",
     });
   };

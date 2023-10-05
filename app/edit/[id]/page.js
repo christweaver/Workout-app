@@ -1,7 +1,7 @@
 import EditForm from "@/app/components/Editform";
 
 let getTopics = async (id) => {
-  const res = await fetch(`http://localhost:3000/api/new/${id}`, {
+  const res = await fetch(`/api/new/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) {
