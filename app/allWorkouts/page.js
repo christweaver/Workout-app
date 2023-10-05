@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import AllWorkouts from "../components/AllWorkouts";
 import { useState } from "react";
 let getTopics = async () => {
-  const res = await fetch("http://localhost:3000/api/new", {
+  const res = await fetch("/api/new", {
     cache: "no-store",
   });
   return res.json();
