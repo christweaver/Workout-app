@@ -15,7 +15,7 @@ export default function NewWorkout() {
   let router = useRouter();
   let handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:3000/api/new", {
+    const res = await fetch("/api/new", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
