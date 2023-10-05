@@ -2,13 +2,32 @@
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Deleted from "./Deleted";
+import { useState } from "react";
+import { useEffect } from "react";
 
-export default function Test({ data }) {
+let getTopics = async () => {
+  const res = await fetch("/api/new", {
+    cache: "no-store",
+  });
+  return res.json();
+};
+
+export default function Test() {
   const { data: session } = useSession();
   const user = session?.user.email;
+  const [list, setList] = useState([]); // Use state to manage the list data
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getTopics();
+      setList(data.list);
+    }
+
+    fetchData();
+  }, []);
 
   // Filter the data array to include only items where item.username matches user
-  const filteredData = data.filter((item) => item.username === user);
+  const filteredData = list.filter((item) => item.username === user);
 
   const dataByDate = {};
 
